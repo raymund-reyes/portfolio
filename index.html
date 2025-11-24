@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RAYMUND REYES | Web Developer Portfolio</title>
     <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230077ff'/%3E%3Ctext x='50' y='64' font-size='55' font-family='Sora, sans-serif' text-anchor='middle' fill='white'%3ER%3C/text%3E%3C/svg%3E"
     />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&display=swap"
       rel="stylesheet"
@@ -84,10 +83,19 @@
         padding: 30px 10%;
         z-index: 999;
         transition: background 0.3s ease;
+        /* opacity: 0; */
+        /* transform: translateY(-20px); */
+        /* animation: fadeUp 0.8s ease forwards; */
+        /* animation-delay: 1.2s; */
+      }
+      nav {
         opacity: 0;
         transform: translateY(-20px);
-        animation: fadeUp 0.8s ease forwards;
-        animation-delay: 1.2s;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+      nav.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       nav .logo {
@@ -209,7 +217,7 @@
 
       #about {
         padding: 0;
-        background: linear-gradient(318deg, #e7e7e7 0%, #ecf0ff 70%, #fefefe)
+        background: linear-gradient(318deg, #e7e7e7 0%, #ecf0ff 70%, #fefefe);
       }
 
       .about-inner {
@@ -291,7 +299,7 @@
 
       /* ---------- PROJECTS ---------- */
       #projects {
-        background: transparent!important;
+        background: transparent !important;
       }
 
       .projects-grid {
@@ -727,6 +735,95 @@
       .head-nav a {
         font-weight: 600;
       }
+      .logo a {
+        text-decoration: none;
+        color: var(--primary);
+      }
+      /* ---------- SCROLL DOWN MODERN ARROW ---------- */
+      .scroll-down {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .scroll-down .arrow-down {
+        width: 24px;
+        height: 24px;
+        border-left: 3px solid var(--primary);
+        border-bottom: 3px solid var(--primary);
+        transform: rotate(45deg);
+        animation: bounce 1.2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0) rotate(-45deg);
+        }
+        40% {
+          transform: translateX(-50%) translateY(10px) rotate(-45deg);
+        }
+        60% {
+          transform: translateX(-50%) translateY(5px) rotate(-45deg);
+        }
+      }
+
+      /* Optional: make it slightly bigger on small screens */
+      @media (max-width: 768px) {
+        .scroll-down .arrow-down {
+          width: 20px;
+          height: 20px;
+          border-width: 2px;
+        }
+      }
+      /* ---------- HEADER LOGO ---------- */
+      .header-logo {
+        position: absolute;
+        top: 20px;
+        left: 120px;
+        z-index: 100;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .header-logo:hover {
+        transform: scale(1.1);
+      }
+
+      /* Optional: smaller on mobile */
+      @media (max-width: 768px) {
+        .header-logo svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      header {
+        background-color: var(--bg);
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(0, 119, 255, 0.1),
+            rgba(0, 119, 255, 0.1) 1px,
+            transparent 1px,
+            transparent 10px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(0, 119, 255, 0.05),
+            rgba(0, 119, 255, 0.05) 1px,
+            transparent 1px,
+            transparent 20px
+          );
+      }
     </style>
   </head>
 
@@ -739,7 +836,7 @@
 
     <!-- ===== NAVBAR ===== -->
     <nav>
-      <div class="logo">RAYMUND</div>
+      <div class="logo"><a href="#">RAYMUND</a></div>
       <ul class="head-nav">
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#projects">PROJECTS</a></li>
@@ -753,12 +850,38 @@
 
     <!-- ===== HEADER ===== -->
     <header>
+      <!-- Logo in top-left of header -->
+      <div class="header-logo">
+        <!-- Circle with R inside -->
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="50" cy="50" r="50" fill="var(--primary)" />
+          <text
+            x="50%"
+            y="55%"
+            text-anchor="middle"
+            fill="#fff"
+            font-size="50"
+            font-family="Sora, sans-serif"
+            font-weight="700"
+            dy=".3em"
+          >
+            R
+          </text>
+        </svg>
+      </div>
+
       <h1 class="hero-title">Hi, I’m RAYMUND REYES</h1>
-      <p>
-        Full-Stack Web Developer based in the Philippines, specializing in
-        modern web technologies to create seamless, scalable solutions.
-      </p>
+      <p>Full-Stack Web Developer • Software Engineer • Project Lead</p>
       <a href="#contact" class="btn">Get in Touch</a>
+      <!-- Scroll Down Indicator -->
+      <div class="scroll-down">
+        <div class="arrow-down"></div>
+      </div>
     </header>
 
     <!-- ===== ABOUT ===== -->
@@ -768,18 +891,18 @@
           <div class="about-text">
             <h2>About Me</h2>
             <p class="body-copy">
-              I’m an experienced and passionate
-              <strong>Full-Stack Web Developer</strong> with over 10 years of
-              experience crafting scalable and efficient web and mobile
-              applications. Since 2015, I’ve worked with startups and established
-              companies to create impactful digital products and seamless user
-              experiences.
+              Results-driven Full-Stack Developer with over 10 years of
+              experience building scalable, high-performance web applications,
+              real-time communication systems, and cloud-powered solutions.
+              Skilled in architecting end-to-end platforms using React, Vue.js,
+              Node.js, Laravel, WebRTC, AWS, and Google Cloud.
             </p>
             <p class="body-copy">
-              I’m skilled in both front-end and back-end development, server
-              management, and cloud deployment using Google Cloud and AWS. I love
-              collaborating with talented people and bringing ideas to life
-              through code.
+              Strong background in leading cross-functional teams, translating
+              business requirements into technical solutions, and delivering
+              projects that improve efficiency, user experience, and operational
+              results. Passionate about creating clean, maintainable, and
+              impactful software that solves real-world problems.
             </p>
           </div>
           <div class="about-skills">
@@ -904,8 +1027,10 @@
 
         <div class="experience-timeline">
           <div class="timeline-item">
-            <div class="timeline-meta">2024 – Present · S&R Advertising GmbH</div>
-            <h3>Project Manager</h3>
+            <div class="timeline-meta">
+              2024 – Present · S&R Advertising GmbH
+            </div>
+            <h3>Full-Stack Developer / Project Lead</h3>
             <p class="role">
               Leading cross-functional teams to deliver marketing technology
               initiatives with measurable ROI.
@@ -992,7 +1117,7 @@
     <footer>© 2025. All Rights Reserved.</footer>
 
     <script>
-      // 🌙 Dark / Light Mode Toggle with persistence
+      // Dark / Light Mode Toggle with persistence
       const THEME_KEY = "rr-theme";
       const toggle = document.getElementById("modeToggle");
 
@@ -1037,12 +1162,26 @@
         revealObserver.observe(section);
       });
 
-      // ⏳ Loader Screen
+      // Loader Screen
       window.addEventListener("load", () => {
         const loader = document.getElementById("loader");
         loader.style.opacity = "0";
         loader.style.visibility = "hidden";
         setTimeout(() => loader.remove(), 1000);
+      });
+
+      // Show nav only after scrolling past header
+      const nav = document.querySelector("nav");
+      const header = document.querySelector("header");
+
+      window.addEventListener("scroll", () => {
+        const headerBottom = header.offsetHeight;
+
+        if (window.scrollY > headerBottom - 80) {
+          nav.classList.add("visible");
+        } else {
+          nav.classList.remove("visible");
+        }
       });
     </script>
   </body>
